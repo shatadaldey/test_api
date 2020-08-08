@@ -24,9 +24,9 @@
     </center>
     {% if year %}
     <!--<center style="color: Blue">-->
-    <center class="class_1">
-      The population (in Million) for the year {{year}} was : {{population}}
-    </center>
+      <center class="class_1">
+        The population (in Million) for the year {{year}} was : {{population}}
+      </center>
     {% endif %}
   </body> 
 
@@ -81,5 +81,10 @@
 
     </script>
   </center>
+  {% if year %}
+    <center class="class_1">
+      The Population has increased by {{perc_inc}}% as compared to the same of 1960 
+    </center>
+  {% endif %}
 </body>
 </html>

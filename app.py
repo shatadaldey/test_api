@@ -70,7 +70,8 @@ def fetch_population_details(methods=['GET']):
     sql_query = """
         SELECT 
             {year} as year,
-            A.year_{year}/1000000 as population
+            A.year_{year}/1000000 as population,
+            ((A.year_{year}/year_1960)-1)*100 as perc_inc
             
         FROM 
             `deft-effect-282902.population.population_by_country` as A
@@ -85,7 +86,7 @@ def fetch_population_details(methods=['GET']):
 
     # Return response to 
     
-    return render_template('bar_chart.html', year = result[0]['year'],population = result[0]['population'], title='World Population by Year', max = 10000, labels=bar_labels, values=bar_values)
+    return render_template('bar_chart.html',perc_inc = result[0]['perc_inc'], year = result[0]['year'],population = result[0]['population'], title='World Population Trend', max = 10000, labels=bar_labels, values=bar_values)
 
 
 
