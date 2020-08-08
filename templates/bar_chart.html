@@ -5,6 +5,12 @@
     <meta charset="utf-8" />
     <title>World Population</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <style> .class_1 
+      {
+        color: Blue;
+        font-weight: bold;
+      }
+    </style>
 </head>
 
   <body>
@@ -16,13 +22,19 @@
         <input type="submit" name="Submit">
       </form>
     </center>
+    {% if year %}
+    <!--<center style="color: Blue">-->
+    <center class="class_1">
+      The population (in Million) for the year {{year}} was : {{population}}
+    </center>
+    {% endif %}
   </body> 
 
 
 
 <body>
   <center>
-    <h1>{{ title }}</h1>
+    <h3>{{ title }}</h3>
   </center>
   <center>
     <canvas id="chart" width="1100" height="400"></canvas>

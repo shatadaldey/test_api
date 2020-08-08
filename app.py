@@ -46,7 +46,7 @@ values = df1['Population'].values.tolist()
 def bar():
     bar_labels=labels
     bar_values=values
-    return render_template('bar_chart.html', title='World Population by Year', max = 10000, labels=bar_labels, values=bar_values)
+    return render_template('bar_chart.html', title='World Population Trend', max = 10000, labels=bar_labels, values=bar_values)
 
 
 @app.route("/year")
@@ -80,11 +80,13 @@ def fetch_population_details(methods=['GET']):
 
     # 4. Fetch results
     result = list(client.query(sql_query.format(year = year)))
-    # print(result)
+    print("result" ,result)
 
 
     # Return response to 
-    return "The population (in Million) for the year {} was : {}".format(result[0]['year'], 
-        result[0]['population']),render_template('bar_chart.html', title='World Population by Year', max = 10000, labels=bar_labels, values=bar_values),
+    
+    return render_template('bar_chart.html', year = result[0]['year'],population = result[0]['population'], title='World Population by Year', max = 10000, labels=bar_labels, values=bar_values)
+
+
 
 app.run(host='0.0.0.0', port=8003)
